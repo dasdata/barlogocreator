@@ -1,6 +1,6 @@
 # BarLogo
 
-BarLogo is a C# .NET Core 7 application that uses the [Dalle2](https://github.com/dalle2/dalle2) library to generate unique logos using a combination of geometric shapes and colors. The application was developed using [Visual Studio](https://visualstudio.microsoft.com/).
+BarLogo is a C# .NET Core 7 application that uses the [Dalle-2](https://openai.com/dall-e-2/) library to generate unique logos using a combination of geometric shapes and colors. The application was developed using [Visual Studio](https://visualstudio.microsoft.com/).
 
 BarLogo allows you to specify a color scheme, logo style, business name, and industry to generate logos tailored to your needs.
 
