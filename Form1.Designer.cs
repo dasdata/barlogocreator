@@ -47,6 +47,9 @@
             this.picResult1 = new System.Windows.Forms.PictureBox();
             this.picResult2 = new System.Windows.Forms.PictureBox();
             this.picResult3 = new System.Windows.Forms.PictureBox();
+            this.cbxLogoStyle = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblLoading = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResult1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResult2)).BeginInit();
@@ -57,7 +60,7 @@
             // 
             this.picResult.Location = new System.Drawing.Point(62, 728);
             this.picResult.Name = "picResult";
-            this.picResult.Size = new System.Drawing.Size(456, 427);
+            this.picResult.Size = new System.Drawing.Size(456, 418);
             this.picResult.TabIndex = 0;
             this.picResult.TabStop = false;
             // 
@@ -102,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 123);
+            this.label2.Location = new System.Drawing.Point(62, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 37);
             this.label2.TabIndex = 5;
@@ -111,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 223);
+            this.label3.Location = new System.Drawing.Point(62, 234);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 37);
             this.label3.TabIndex = 6;
@@ -120,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(685, 223);
+            this.label4.Location = new System.Drawing.Point(685, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 37);
             this.label4.TabIndex = 7;
@@ -129,7 +132,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(685, 123);
+            this.label5.Location = new System.Drawing.Point(685, 121);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 37);
             this.label5.TabIndex = 8;
@@ -145,7 +148,7 @@
             // 
             // txtProduct
             // 
-            this.txtProduct.Location = new System.Drawing.Point(62, 263);
+            this.txtProduct.Location = new System.Drawing.Point(62, 279);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(495, 43);
             this.txtProduct.TabIndex = 11;
@@ -154,7 +157,7 @@
             // cbIndustries
             // 
             this.cbIndustries.FormattingEnabled = true;
-            this.cbIndustries.Location = new System.Drawing.Point(685, 163);
+            this.cbIndustries.Location = new System.Drawing.Point(685, 161);
             this.cbIndustries.Name = "cbIndustries";
             this.cbIndustries.Size = new System.Drawing.Size(521, 45);
             this.cbIndustries.TabIndex = 12;
@@ -163,7 +166,7 @@
             // cbStyles
             // 
             this.cbStyles.FormattingEnabled = true;
-            this.cbStyles.Location = new System.Drawing.Point(685, 263);
+            this.cbStyles.Location = new System.Drawing.Point(685, 279);
             this.cbStyles.Name = "cbStyles";
             this.cbStyles.Size = new System.Drawing.Size(521, 45);
             this.cbStyles.TabIndex = 14;
@@ -172,7 +175,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1308, 123);
+            this.label6.Location = new System.Drawing.Point(1308, 234);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 37);
             this.label6.TabIndex = 15;
@@ -182,9 +185,9 @@
             // 
             this.lbColors.FormattingEnabled = true;
             this.lbColors.ItemHeight = 37;
-            this.lbColors.Location = new System.Drawing.Point(1308, 163);
+            this.lbColors.Location = new System.Drawing.Point(1308, 279);
             this.lbColors.Name = "lbColors";
-            this.lbColors.Size = new System.Drawing.Size(655, 522);
+            this.lbColors.Size = new System.Drawing.Size(655, 411);
             this.lbColors.TabIndex = 16;
             this.lbColors.SelectedIndexChanged += new System.EventHandler(this.lbColors_SelectedIndexChanged);
             // 
@@ -212,11 +215,42 @@
             this.picResult3.TabIndex = 19;
             this.picResult3.TabStop = false;
             // 
+            // cbxLogoStyle
+            // 
+            this.cbxLogoStyle.FormattingEnabled = true;
+            this.cbxLogoStyle.Location = new System.Drawing.Point(1308, 161);
+            this.cbxLogoStyle.Name = "cbxLogoStyle";
+            this.cbxLogoStyle.Size = new System.Drawing.Size(521, 45);
+            this.cbxLogoStyle.TabIndex = 21;
+            this.cbxLogoStyle.SelectedIndexChanged += new System.EventHandler(this.cbxLogoStyle_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1308, 121);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 37);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "LogoType";
+            // 
+            // lblLoading
+            // 
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.ForeColor = System.Drawing.Color.Black;
+            this.lblLoading.Location = new System.Drawing.Point(942, 1202);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(132, 37);
+            this.lblLoading.TabIndex = 22;
+            this.lblLoading.Text = "Loading...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2019, 1319);
+            this.Controls.Add(this.lblLoading);
+            this.Controls.Add(this.cbxLogoStyle);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.picResult3);
             this.Controls.Add(this.picResult2);
             this.Controls.Add(this.picResult1);
@@ -267,5 +301,8 @@
         private PictureBox picResult1;
         private PictureBox picResult2;
         private PictureBox picResult3;
+        private ComboBox cbxLogoStyle;
+        private Label label7;
+        private Label lblLoading;
     }
 }
