@@ -42,7 +42,6 @@
             this.cbIndustries = new System.Windows.Forms.ComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.cbStyles = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbColors = new System.Windows.Forms.ListBox();
             this.picResult1 = new System.Windows.Forms.PictureBox();
             this.picResult2 = new System.Windows.Forms.PictureBox();
@@ -50,6 +49,9 @@
             this.cbxLogoStyle = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
+            this.cmbTheme = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResult1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResult2)).BeginInit();
@@ -67,18 +69,18 @@
             // txtPrompt
             // 
             this.txtPrompt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPrompt.Location = new System.Drawing.Point(62, 356);
+            this.txtPrompt.Location = new System.Drawing.Point(62, 364);
             this.txtPrompt.Multiline = true;
             this.txtPrompt.Name = "txtPrompt";
-            this.txtPrompt.Size = new System.Drawing.Size(1144, 240);
+            this.txtPrompt.Size = new System.Drawing.Size(1144, 232);
             this.txtPrompt.TabIndex = 1;
             // 
             // btnMakeLogo
             // 
             this.btnMakeLogo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMakeLogo.Location = new System.Drawing.Point(551, 602);
+            this.btnMakeLogo.Location = new System.Drawing.Point(62, 602);
             this.btnMakeLogo.Name = "btnMakeLogo";
-            this.btnMakeLogo.Size = new System.Drawing.Size(655, 87);
+            this.btnMakeLogo.Size = new System.Drawing.Size(1144, 87);
             this.btnMakeLogo.TabIndex = 2;
             this.btnMakeLogo.Text = "Make Logo";
             this.btnMakeLogo.UseVisualStyleBackColor = true;
@@ -172,22 +174,13 @@
             this.cbStyles.TabIndex = 14;
             this.cbStyles.SelectedIndexChanged += new System.EventHandler(this.cbStyles_SelectedIndexChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1308, 234);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 37);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Colors";
-            // 
             // lbColors
             // 
             this.lbColors.FormattingEnabled = true;
             this.lbColors.ItemHeight = 37;
-            this.lbColors.Location = new System.Drawing.Point(1308, 279);
+            this.lbColors.Location = new System.Drawing.Point(1309, 426);
             this.lbColors.Name = "lbColors";
-            this.lbColors.Size = new System.Drawing.Size(655, 411);
+            this.lbColors.Size = new System.Drawing.Size(655, 263);
             this.lbColors.TabIndex = 16;
             this.lbColors.SelectedIndexChanged += new System.EventHandler(this.lbColors_SelectedIndexChanged);
             // 
@@ -243,11 +236,40 @@
             this.lblLoading.TabIndex = 22;
             this.lblLoading.Text = "Loading...";
             // 
+            // cmbTheme
+            // 
+            this.cmbTheme.FormattingEnabled = true;
+            this.cmbTheme.Location = new System.Drawing.Point(1308, 279);
+            this.cmbTheme.Name = "cmbTheme";
+            this.cmbTheme.Size = new System.Drawing.Size(521, 45);
+            this.cmbTheme.TabIndex = 23;
+            this.cmbTheme.SelectedIndexChanged += new System.EventHandler(this.cmbTheme_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1309, 235);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 37);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Stylish";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1308, 364);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 37);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Colors";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2019, 1319);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cmbTheme);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.cbxLogoStyle);
             this.Controls.Add(this.label7);
@@ -296,7 +318,6 @@
         private ComboBox cbIndustries;
         private ColorDialog colorDialog1;
         private ComboBox cbStyles;
-        private Label label6;
         private ListBox lbColors;
         private PictureBox picResult1;
         private PictureBox picResult2;
@@ -304,5 +325,8 @@
         private ComboBox cbxLogoStyle;
         private Label label7;
         private Label lblLoading;
+        private ComboBox cmbTheme;
+        private Label label6;
+        private Label label9;
     }
 }

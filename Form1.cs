@@ -4,6 +4,13 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Text;
+using System.Xml;
+
+
 
 namespace BarLogoCreator
 {
@@ -55,6 +62,7 @@ namespace BarLogoCreator
 
             // logo styles
             cbStyles.Items.Add("Minimalist");
+            cbStyles.Items.Add("Professional");
             cbStyles.Items.Add("Vintage");
             cbStyles.Items.Add("Modern");
             cbStyles.Items.Add("Abstract");
@@ -62,14 +70,13 @@ namespace BarLogoCreator
             cbStyles.Items.Add("Chic");
             cbStyles.Items.Add("Elegant");
             cbStyles.Items.Add("Playful");
-            cbStyles.Items.Add("Professional");
             cbStyles.Items.Add("Sophisticated");
             cbStyles.SelectedIndex = 0;
 
             // colors schemes  
-            List<string> colorSchemes = new List<string>() {
+            List<string> colorSchemes = new List<string>() { "Black and White",  "White and Silver",  "Silver and Gray",
                   "Red and Black",  "Orange and Blue", "Yellow and Green",  "Green and White",  "Blue and Silver",  "Purple and Pink",  "Pink and Black",
-                        "Black and White",  "White and Silver",  "Silver and Gray",  "Gray and Maroon", "Maroon and Navy",  "Navy and Teal",  "Teal and Olive",
+                         "Gray and Maroon", "Maroon and Navy",  "Navy and Teal",  "Teal and Olive",
                         "Olive and Lime",  "Red, Yellow, and Blue", "Green, White, and Black",  "Pink, Purple, and Blue",  "Gold and Brown",
                         "Pink, Purple, and Green",  "Cyan and Magenta",  "Yellow, Orange, and Red" };
             foreach (string colorScheme in colorSchemes)
@@ -78,8 +85,18 @@ namespace BarLogoCreator
             } 
             lbColors.SelectedIndex = 0;
 
+            // add stylish
+            List<string> logoStylish = new List<string>() {"3D", "Piexl", "Sketch", "Retro", "Cartoon", "Geometric", "Neon", "Clay", "Abstract", "Lineal"   };
+
+            foreach (string logoStyle in logoStylish)
+            {
+                cmbTheme.Items.Add(logoStyle);
+            }
+            cmbTheme.SelectedIndex = 0;
+
+
             // add some styles
-            List<string> logoTypes = new List<string>() { "Icon", "Wordmark", "Combination Mark", "Abstract Logo", "Emblem", "Letterform", "Typographic Logo", "Hand-Drawn Logo", "Mascot Logo" };
+            List<string> logoTypes = new List<string>() { "Mascot Logo", "Emblem", "Icon", "Wordmark", "Combination Mark", "Abstract Logo",  "Letterform", "Typographic Logo", "Hand-Drawn Logo" };
 
             foreach (string logoType in logoTypes)
             {
@@ -111,7 +128,9 @@ namespace BarLogoCreator
 
             foreach (string image in imagesFiles)
             {
-                images.Add(Image.FromFile(_DesktopImageDire + "/" + _folderName + "/" + image));
+                string _imageOnDisk = _DesktopImageDire + "/" + _folderName + "/" + image;
+                images.Add(Image.FromFile(_imageOnDisk));
+                ConvertPngToSvg(_imageOnDisk, _imageOnDisk.Replace("png", "svg"));
                 lblResult.Text += " " + image;
             }
 
@@ -177,8 +196,8 @@ namespace BarLogoCreator
                     _filesArray += _fileRandomName + ".png|";
                     using (WebClient webClient = new WebClient())    // Download the image from the URL
                     {
-                        // store files into the Logo folder on desktop
-                        webClient.DownloadFile((string)_content[i]["url"], _DesktopImageDire + "/"+ _folderName + "/" + _fileRandomName + ".png");
+                        // store files into the Logo folder on desktop 
+                        webClient.DownloadFile((string)_content[i]["url"], _DesktopImageDire + "/"+ _folderName + "/" + _fileRandomName + ".png"); 
                     }
                 }
             }
@@ -235,6 +254,7 @@ namespace BarLogoCreator
                   ", " + txtProduct.Text +
                   ", extremly balanced, centered, " + cbStyles.SelectedItem.ToString() + " " +
                   ", " + cbIndustries.SelectedItem.ToString() +
+                   ", stilished as " + cmbTheme.SelectedItem.ToString() +
                   ", vivid colors of " + lbColors.SelectedItem.ToString() +
                   ", white background, no shadows, unique  ";
             }
@@ -242,7 +262,32 @@ namespace BarLogoCreator
 
         }
 
-        // selections updates bellow
+        public static void ConvertPngToSvg(string pngFilePath, string svgFilePath)
+        {
+            Bitmap bmp = new Bitmap(pngFilePath);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bmp.Save(ms, ImageFormat.Png);
+                ms.Position = 0;
+
+                string svgXml = string.Format(
+                    "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='{0}' height='{1}'> " +
+                    "<rect width='100%' height='100%' fill='url(#img)' /> " +
+                    "<defs> " +
+                    "<pattern id='img' patternUnits='userSpaceOnUse' width='{0}' height='{1}'> " +
+                    "<image xlink:href='data:image/png;base64,{2}' width='{0}' height='{1}' /> " +
+                    "</pattern> " +
+                    "</defs> " +
+                    "</svg>",
+                    bmp.Width, bmp.Height,
+                    Convert.ToBase64String(ms.ToArray()));
+
+                File.WriteAllText(svgFilePath, svgXml);
+            }
+        }
+
+
+
         private void txtBrandName_TextChanged(object sender, EventArgs e)
         {
             cmdMakeLogoPrompt();
@@ -269,6 +314,11 @@ namespace BarLogoCreator
         }
 
         private void cbxLogoStyle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmdMakeLogoPrompt();
+        }
+
+        private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmdMakeLogoPrompt();
         }
